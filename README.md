@@ -1,2 +1,2 @@
 # Vim
-Repo for my Vim stuff.
+Repo for my Vim files.
