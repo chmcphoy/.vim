@@ -1,2 +1,2 @@
 # Vim
-Repo for my Vim files.
+Simply a place to keep my vim settings, configs etc.
