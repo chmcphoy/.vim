@@ -13,5 +13,5 @@
 :map <leader>t i<<Esc>ea><Esc>
 
 " Defaults for Syntax
-:syntax enable
+syntax on
 :set background=dark
