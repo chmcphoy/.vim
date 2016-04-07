@@ -1,6 +1,7 @@
 " Basic Vim Defaults
 :set shiftwidth=4
 :set incsearch
+:set hlsearch
 :set number
 :set ignorecase
 :set showcmd
