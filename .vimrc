@@ -12,7 +12,7 @@ colorscheme xoria256
 set backspace=indent,eol,start                                             
 set nobackup                                                               
 execute "set colorcolumn=" . join(range(81,335), ',')                      
-:hi ColorColumn ctermbg=233 guibg=black                                    
+hi ColorColumn ctermbg=233 guibg=black                                    
 set cursorline                                                             
 set encoding=utf-8                                                         
 set expandtab                                                              
