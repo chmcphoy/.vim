@@ -1,18 +1,18 @@
 " --- Key Functionality ---                                                
-set nocompatible                                                           
-let mapleader = "-"                                                        
+set nocompatible                                                                    
+let mapleader = "-"              " <leader> for all mappings                                          
 filetype plugin indent on                                                  
 syntax on                                                                  
-set t_Co=256                                                               
-set background=dark                                                        
-colorscheme xoria256                                                       
+set t_Co=256                     " Allow vim to access all 256 colors                                 
+set background=dark
+let g:zenburn_high_Contrast = 1  " Better visibility for brighter environments
+colors zenburn
+colorscheme zenburn                                                       
                                                                            
                                                                            
 " --- Main Configuration (a-z) ---                                         
 set backspace=indent,eol,start                                             
 set nobackup                                                               
-execute "set colorcolumn=" . join(range(81,335), ',')                      
-hi ColorColumn ctermbg=233 guibg=black                                    
 set cursorline                                                             
 set encoding=utf-8                                                         
 set expandtab                                                              
