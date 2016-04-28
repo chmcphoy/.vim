@@ -44,9 +44,9 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 command! -nargs=* Wrap set wrap linebreak nolist                           
                                                                            
 " --- Mappings ---                                                         
-map <Esc><Esc> :w<CR>                                                      
+map <Esc><Esc> :w<CR>         " Quick way to write files & unclutter history
+nmap <leader><leader> :q<CR>  " Quick way to exit files & unclutter history
                                                                            
-map <leader>c i{<Esc>ea}<Esc>                                              
-map <leader>p i(<Esc>ea)<Esc>                                              
-map <leader>l i[<Esc>ea]<Esc>                                              
-map <leader>t i<<Esc>ea><Esc>  
+map <leader>c i{<Esc>ea}<Esc> " Wraps curly braces around a word.                                              
+map <leader>p i(<Esc>ea)<Esc> " Wraps parenthesis around a word.                                       
+map <leader>l i[<Esc>ea]<Esc> " Wraps square brackets around a word.
