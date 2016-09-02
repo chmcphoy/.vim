@@ -1,6 +1,25 @@
 " --- Key Functionality ---                                                
 set nocompatible                                                                    
-let mapleader = "-"              " <leader> for all mappings                                          
+let mapleader = "-"              " <leader> for all mappings 
+
+" --- Vundle Installation and Setup ---
+filetype off " Required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'             " let Vundle manage Vundle, required
+
+Plugin 'hail2u/vim-css3-syntax'           " optimized CSS syntax
+Plugin 'cakebaker/scss-syntax.vim'        " SASS syntax
+Plugin 'othree/html5.vim'                 " optimized HTML syntax
+Plugin 'pangloss/vim-javascript'          " optimized JavaScript syntax
+Plugin 'elzr/vim-json'                    " syntax for json
+Plugin 'mustache/vim-mustache-handlebars' " syntax for express-handlebars view
+
+call vundle#end() " Make sure your plugins are before this line
+
+
+" --- Essentials ---
 filetype plugin indent on                                                  
 syntax on                                                                  
 set t_Co=256                     " Allow vim to access all 256 colors                                 
