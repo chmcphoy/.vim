@@ -42,6 +42,7 @@ set incsearch
 set laststatus=2
 set number
 set numberwidth=4
+set pastetoggle=<C-p>
 set ruler
 set shiftwidth=2
 set showcmd
