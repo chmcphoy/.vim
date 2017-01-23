@@ -9,13 +9,14 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'             " let Vundle manage Vundle, required
 
-Plugin 'hail2u/vim-css3-syntax'           " optimized CSS syntax
-Plugin 'cakebaker/scss-syntax.vim'        " SASS syntax
-Plugin 'othree/html5.vim'                 " optimized HTML syntax
-Plugin 'pangloss/vim-javascript'          " optimized JavaScript syntax
-Plugin 'elzr/vim-json'                    " syntax for json
-Plugin 'mustache/vim-mustache-handlebars' " Jade ftw but this still happens
-Plugin 'scrooloose/nerdtree'              " navigate files quickly
+Plugin 'othree/html5.vim'                                " optimized HTML syntax
+Plugin 'hail2u/vim-css3-syntax'                          " optimized CSS syntax
+Plugin 'cakebaker/scss-syntax.vim'                       " SASS syntax
+Plugin 'pangloss/vim-javascript'                         " optimized JavaScript syntax
+Plugin 'othree/javascript-libraries-syntax.vim'          " syntax for JS libs & frameworks
+Plugin 'elzr/vim-json'                                   " syntax for json
+Plugin 'mustache/vim-mustache-handlebars'                " Jade ftw but this still happens
+Plugin 'scrooloose/nerdtree'                             " navigate files quickly
 
 call vundle#end() " make sure your plugins are before this line
 
