@@ -20,6 +20,9 @@ Plugin 'ctrlpvim/ctrlp.vim'                              " fuzzy file finder
 Plugin 'mileszs/ack.vim'                                 " search in code and filenames
 Plugin 'vim-airline/vim-airline'                         " awesome and light tabline for vim
 Plugin 'tpope/vim-surround'                              " quoting/parenthesizing made easy
+Plugin 'mattn/emmet-vim'                                 " improve HTML & CSS workflow
+Plugin 'kchmck/vim-coffee-script'                        " syntax for CoffeeScript
+
 
 call vundle#end() " make sure your plugins are before this line
 
