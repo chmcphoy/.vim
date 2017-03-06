@@ -15,14 +15,14 @@ Plugin 'cakebaker/scss-syntax.vim'                       " SASS syntax
 Plugin 'pangloss/vim-javascript'                         " optimized JavaScript syntax
 Plugin 'othree/javascript-libraries-syntax.vim'          " syntax for JS libs & frameworks
 Plugin 'elzr/vim-json'                                   " syntax for json
-Plugin 'scrooloose/nerdtree'                             " navigate files quickly
+Plugin 'scrooloose/nerdtree'                             " navigate files within a tree-like structure
 Plugin 'ctrlpvim/ctrlp.vim'                              " fuzzy file finder
 Plugin 'mileszs/ack.vim'                                 " search in code and filenames
 Plugin 'vim-airline/vim-airline'                         " awesome and light tabline for vim
 Plugin 'tpope/vim-surround'                              " quoting/parenthesizing made easy
 Plugin 'mattn/emmet-vim'                                 " improve HTML & CSS workflow
 Plugin 'kchmck/vim-coffee-script'                        " syntax for CoffeeScript
-
+Plugin 'fatih/vim-go'                                    " Go development plugin
 
 call vundle#end() " make sure your plugins are before this line
 
@@ -32,7 +32,7 @@ filetype plugin indent on
 syntax on 
 set t_Co=256                    " allow vim to access all 256 colors 
 set background=dark             " dark is the way
-let g:molokai_original = 1
+"let g:molokai_original = 1
 colors molokai
 colorscheme molokai
 
@@ -58,11 +58,29 @@ set softtabstop=2
 set textwidth=80
 set title
 set nowrap
+set noet
 
 " --- File Configs ---
+
+" HTML and CSS
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" Go configs
+" au FileType go setlocal softtabstop=4 tabstop=4
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>gb <Plug>(go-doc-browser) 
 
 " --- Mappings ---         
+
+" fast tab navigation
+nmap <leader>n :tabnext<cr>
+nmap <leader>t :tabnew<cr>
+
 
 " fast way to save files & also unclutter history
 nnoremap <leader>w :w<CR>                        
