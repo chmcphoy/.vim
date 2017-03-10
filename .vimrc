@@ -101,3 +101,6 @@ nmap <leader>a :tab split<CR>:Ack "" <left>
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
 " Ctrlp opens with <C-P>
+
+" CtrlP won't show results from node_modules
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|ico|git|svn|png|jpg|gif|ttf))$'
