@@ -1,8 +1,16 @@
-" --- Key Functionality ---          
+""""""""""""""""""""""""""""""
+" => .vimrc of Chuma McPhoy
+""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
+" => Core Essentials
+""""""""""""""""""""""""""""""
 set nocompatible                         " be iMproved
 let mapleader = "\<Space>"               " <leader> for all mappings                                       
 
-" --- Vundle Installation and Setup 
+""""""""""""""""""""""""""""""
+" => Vundle Plugin Setup 
+""""""""""""""""""""""""""""""
 filetype off " Required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -23,20 +31,26 @@ Plugin 'tpope/vim-surround'                              " quoting/parenthesizin
 Plugin 'mattn/emmet-vim'                                 " improve HTML & CSS workflow
 Plugin 'kchmck/vim-coffee-script'                        " syntax for CoffeeScript
 Plugin 'fatih/vim-go'                                    " Go development plugin
+Plugin 'raimondi/delimitmate'			         " insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'tpope/vim-fugitive'                              " a Git wrapper so awesome, it should be illegal
 
 call vundle#end() " make sure your plugins are before this line
 
-
-" --- Essentials ---
 filetype plugin indent on
+
+""""""""""""""""""""""""""""""
+" => Vim UI
+""""""""""""""""""""""""""""""
 syntax on 
-set t_Co=256                    " allow vim to access all 256 colors 
-set background=dark             " dark is the way
+set t_Co=256
+set background=dark
 "let g:molokai_original = 1
 colors molokai
 colorscheme molokai
 
-" --- Main Configuration (a-z) ---   
+""""""""""""""""""""""""""""""
+" => Main Configuration (a-z)
+""""""""""""""""""""""""""""""
 set backspace=indent,eol,start
 set nobackup
 set cursorline  
@@ -60,47 +74,60 @@ set title
 set nowrap
 set noet
 
-" --- File Configs ---
+""""""""""""""""""""""""""""""
+" => File Configs
+""""""""""""""""""""""""""""""
+autocmd FileType html,css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript,coffee setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
-" HTML and CSS
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+""""""""""""""""""""""""""""""
+" => Mappings
+""""""""""""""""""""""""""""""
+nmap <leader>w :w<CR>
+nmap <leader>q :q<CR>       
+nmap <leader>o :only<CR>       
+nmap <leader>s :so %<CR>
+nmap <leader>v :vsp<CR><C-w><C-w>
+nmap <leader>hs :sp<CR><C-w><C-w>
 
-" Go configs
-" au FileType go setlocal softtabstop=4 tabstop=4
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <leader>gb <Plug>(go-doc-browser) 
+" find should be quick and intuitive
+nmap <leader>f /
 
-" --- Mappings ---         
+" <Ctrl-l> removes all search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " fast tab navigation
 nmap <leader>n :tabnext<cr>
 nmap <leader>t :tabnew<cr>
 
 
-" fast way to save files & also unclutter history
-nnoremap <leader>w :w<CR>                        
-
-" fast way to exit files & also unclutter history
-nnoremap <leader>q :q<CR>       
-
-" source the current file fast and simple
-nmap <leader>s :so %<CR>
-
-" turn NERDTree on/off with a single command
-nmap <silent> <C-N> :NERDTreeToggle<CR>          
-
-" open up a new tab and search for something
+""""""""""""""""""""""""""""""
+" => Plugin Configs
+""""""""""""""""""""""""""""""
+" => Ack
 nmap <leader>a :tab split<CR>:Ack "" <left>
-
-" search for word under cursor in new tab
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-" Ctrlp opens with <C-P>
+" => CtrlP
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|ico|git|svn|png|jpg|gif|ttf))$'	" CtrlP won't show results from node_modules
 
-" CtrlP won't show results from node_modules
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|ico|git|svn|png|jpg|gif|ttf))$'
+" => Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" => Fugitive
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gb :Git branch<CR>
+
+" => NERDTree
+nmap <silent> <C-N> :NERDTreeToggle<CR>          
+
+" => Be aware of available Go mappings
+" au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>b <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+" au FileType go nmap <leader>gb <Plug>(go-doc-browser) 
