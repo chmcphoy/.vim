@@ -106,11 +106,11 @@ nmap <leader>t :tabnew<cr>
 " => Plugin Configs
 """"""""""""""""""""""""""""""
 " => Ack
-nmap <leader>a :tab split<CR>:Ack "" <left>
-nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+nmap <leader>a <CR>:Ack ""<left>
+nmap <leader>A :tab split<CR>:Ack "\W<C-r><C-w>\W"<CR>
 
 " => CtrlP
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|ico|git|svn|png|jpg|gif|ttf))$'	" CtrlP won't show results from node_modules
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist|build)|(\.(swp|ico|git|svn|png|jpg|gif|ttf))$'	" CtrlP won't show results from node_modules
 
 " => Emmet
 let g:user_emmet_install_global = 0
