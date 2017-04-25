@@ -91,6 +91,9 @@ nmap <leader>s :so %<CR>
 nmap <leader>v :vsp<CR><C-w><C-w>
 nmap <leader>hs :sp<CR><C-w><C-w>
 
+" hitting jj will jump out of insert mode
+inoremap jj <esc>
+
 " find should be quick and intuitive
 nmap <leader>f /
 
