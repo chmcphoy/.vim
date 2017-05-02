@@ -33,6 +33,11 @@ Plugin 'kchmck/vim-coffee-script'                        " syntax for CoffeeScri
 Plugin 'fatih/vim-go'                                    " Go development plugin
 Plugin 'raimondi/delimitmate'			         " insert mode auto-completion for quotes, parens, brackets, etc.
 Plugin 'tpope/vim-fugitive'                              " a Git wrapper so awesome, it should be illegal
+Plugin 'jnurmine/Zenburn'				 " Colorscheme: Zenburn
+Plugin 'tomasr/molokai'					 " Colorscheme: Molokai
+Plugin 'junegunn/seoul256.vim'				 " Colorscheme: Seoul256
+Plugin 'junegunn/goyo.vim'				 " Distraction-free writing in Vim
+Plugin 'junegunn/limelight.vim'				 " Hyperfocus-writing in Vim
 
 call vundle#end() " make sure your plugins are before this line
 
@@ -44,9 +49,14 @@ filetype plugin indent on
 syntax on 
 set t_Co=256
 set background=dark
-"let g:molokai_original = 1
-colors molokai
-colorscheme molokai
+
+" let g:molokai_original = 1 " original Monokai
+" let g:zenburn_high_Contrast = 1 " darker background, Zenburn
+let g:seoul256_background = 239 " range: 233 (darkest) ~ 239 (lightest)
+
+" current colorscheme
+colors seoul256
+colorscheme seoul256
 
 """"""""""""""""""""""""""""""
 " => Main Configuration (a-z)
@@ -84,29 +94,50 @@ autocmd FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4
 """"""""""""""""""""""""""""""
 " => Mappings
 """"""""""""""""""""""""""""""
+" faster saves and quits
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>       
+
+" Extremely useful
 nmap <leader>o :only<CR>       
+
+" source current file
 nmap <leader>s :so %<CR>
+
+" splits
 nmap <leader>v :vsp<CR><C-w><C-w>
-nmap <leader>hs :sp<CR><C-w><C-w>
+nmap <leader>h :sp<CR><C-w><C-w>
 
-" hitting jj will jump out of insert mode
-inoremap jj <esc>
+" fast escapes from insert, visual and command-line mode
+inoremap jk <esc>
+xnoremap jk <esc>
+cnoremap jk <esc>
 
-" find should be quick and intuitive
+" fast & intuitive finds
 nmap <leader>f /
 
-" <Ctrl-l> removes all search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" move lines with C-(hjkl)
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+nnoremap <silent> <C-h> <<
+nnoremap <silent> <C-l> >>
+xnoremap <silent> <C-k> :move-2<cr>gv
+xnoremap <silent> <C-j> :move'>+<cr>gv
+xnoremap <silent> <C-h> <gv
+xnoremap <silent> <C-l> >gv
+xnoremap < <gv
+xnoremap > >gv
 
-" fast tab navigation
+" clear all search highlighting
+nnoremap <leader>c :nohl<CR>
+
+" tabular navigation
 nmap <leader>n :tabnext<cr>
 nmap <leader>t :tabnew<cr>
 
 
 """"""""""""""""""""""""""""""
-" => Plugin Configs
+" => Plugin Configs (a-z)
 """"""""""""""""""""""""""""""
 " => Ack
 nmap <leader>a <CR>:Ack ""<left>
@@ -114,6 +145,9 @@ nmap <leader>A :tab split<CR>:Ack "\W<C-r><C-w>\W"<CR>
 
 " => CtrlP
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist|build)|(\.(swp|ico|git|svn|png|jpg|gif|ttf))$'	" CtrlP won't show results from node_modules
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_regexp_search = 1
+let g:ctrlp_by_filename = 0
 
 " => Emmet
 let g:user_emmet_install_global = 0
@@ -121,14 +155,19 @@ autocmd FileType html,css EmmetInstall
 
 " => Fugitive
 nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gb :Git branch<CR>
 
+" => Limelight
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
 " => NERDTree
 nmap <silent> <C-N> :NERDTreeToggle<CR>          
 
-" => Be aware of available Go mappings
+" => Go mappings
 " au FileType go nmap <leader>r <Plug>(go-run)
 " au FileType go nmap <leader>b <Plug>(go-build)
 " au FileType go nmap <leader>t <Plug>(go-test)
